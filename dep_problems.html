@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+	</head>
+
+<header>Straight-Line Depreciation Exercise</header>
+
+<br>
+<div>
+  <label>Cost:
+  </label><span id="cost"></span>
+</div>
+<div>
+  <label>Useful Life: <span id="life"></span>
+  </label>
+</div>
+<div class="salvageValue">
+  <label>Salvage Value: <span id="salvage"></span>
+  </label>
+</div>
+<br>
+<div><button onclick="makeUpAProblem()">Make Up a Problem</button></div>
+
+</body>
+
+<script>
+
+function addCommas(nStr)
+{
+	nStr += '';
+	x = nStr.split('.');
+	x1 = x[0];
+	x2 = x.length > 1 ? '.' + x[1] : '';
+	var rgx = /(\d+)(\d{3})/;
+	while (rgx.test(x1)) {
+		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	}
+	return x1 + x2;
+}
+
+function makeUpAProblem () {
+    var genNumCost = Math.random().toFixed(3);
+    var costRaw = (1000000*genNumCost);
+    var costWCommas = addCommas(costRaw);
+    document.getElementById("cost").innerHTML = costWCommas;
+    
+    var genNumLife = (Math.random()).toFixed(1);
+    var lifeRaw = (genNumLife*10);
+    var lifeWCommas = addCommas(lifeRaw);
+    document.getElementById("life").innerHTML = lifeWCommas;
+    
+    var genNumSalvage = (Math.random()).toFixed(2);
+    var salvageRaw = (genNumSalvage*costRaw*.1);
+    var salvageWCommas = addCommas(salvageRaw);
+    document.getElementById("salvage").innerHTML = salvageWCommas;
+}
+
+</script>
